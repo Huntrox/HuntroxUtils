@@ -6,63 +6,57 @@ namespace HuntroxGames.Utils
     public static class EditorStyleExtensions
     {
         #region DrawHeader
-        public static void DrawHeader(this Editor editor, string title)
+
+        public static void DrawHeader(string title)
         {
             GUILayout.Space(5);
             GUILayout.Label(title, EditorStyles.boldLabel);
         }
-        public static void DrawHeader(this Editor editor, string title, string description)
-        {
-            GUILayout.Space(5);
-            GUILayout.Label(title, EditorStyles.boldLabel);
-            GUILayout.Label(description, EditorStyles.miniLabel);
-        }
-        public static void DrawHeader(this Editor editor, string title, string description, string url)
+
+        public static void DrawHeader(string title, string description)
         {
             GUILayout.Space(5);
             GUILayout.Label(title, EditorStyles.boldLabel);
             GUILayout.Label(description, EditorStyles.miniLabel);
-            GUILayout.Label(url, EditorStyles.miniLabel);
         }
-        public static void DrawHeader(this Editor editor, string title, string description, string url, string url2)
+
+        public static void DrawHeader(string title, string description, string url)
         {
             GUILayout.Space(5);
             GUILayout.Label(title, EditorStyles.boldLabel);
             GUILayout.Label(description, EditorStyles.miniLabel);
-            GUILayout.Label(url, EditorStyles.miniLabel);
-            GUILayout.Label(url2, EditorStyles.miniLabel);
+            GUILayout.Label(url, EditorStyles.linkLabel);
         }
-        public static void DrawHeader(this Editor editor, string title, string description, string url, string url2,
-            string url3)
-        {
-            GUILayout.Space(5);
-            GUILayout.Label(title, EditorStyles.boldLabel);
-            GUILayout.Label(description, EditorStyles.miniLabel);
-            GUILayout.Label(url, EditorStyles.miniLabel);
-            GUILayout.Label(url2, EditorStyles.miniLabel);
-            GUILayout.Label(url3, EditorStyles.miniLabel);
-        }
+
         #endregion
+
         #region Container
-        public static void BeginContainer(this Editor editor, string title, string description,int space =5)
+
+        public static void BeginContainer(string title, string description, int space = 5)
         {
             GUILayout.Space(space);
             GUILayout.BeginVertical(EditorStyles.helpBox);
-            editor.DrawHeader(title, description);
+            DrawHeader(title, description);
         }
-        public static void EndContainer(this Editor editor,int space =5)
+
+        public static void EndContainer(int space = 5)
         {
             GUILayout.EndVertical();
             GUILayout.Space(space);
         }
+
         #endregion
+
         #region EditorIcon
 
         public static Texture2D PlayBtnIcon() =>
-            EditorGUIUtility.IconContent(EditorGUIUtility.isProSkin ? "PlayButton On@2x" : "PlayButton@2x").image as Texture2D;
+            EditorGUIUtility.IconContent(EditorGUIUtility.isProSkin ? "PlayButton On@2x" : "PlayButton@2x")
+                .image as Texture2D;
+
         public static Texture2D StopBtnIcon() =>
-            EditorGUIUtility.IconContent(EditorGUIUtility.isProSkin ? "d_PreMatQuad@2x" : "PreMatQuad@2x").image as Texture2D;
-        
+            EditorGUIUtility.IconContent(EditorGUIUtility.isProSkin ? "d_PreMatQuad@2x" : "PreMatQuad@2x")
+                .image as Texture2D;
+
         public static readonly Texture2D InspectorWindow =
             EditorGUIUtility.IconContent(EditorGUIUtility.isProSkin
                 ? "d_UnityEditor.InspectorWindow@2x"
@@ -139,10 +133,33 @@ namespace HuntroxGames.Utils
                 .image as Texture2D;
 
         #endregion
-        
-        //gui styles drawer
-        public static GUIStyle GetStyle(string styleName) 
+
+        #region Drawers
+
+        public static void DrawHorizontalLine(Color color, float height = 1f, float width = 0f)
+        {
+            var rect = GUILayoutUtility.GetRect(0f, height, width, height);
+            EditorGUI.DrawRect(rect, color);
+        }
+
+        public static void DrawVerticalLine(Color color, float width = 1f, float height = 0f)
+        {
+            var rect = GUILayoutUtility.GetRect(width, width, height, height);
+            EditorGUI.DrawRect(rect, color);
+        }
+
+        public static void DrawSeparator(float height = 1f, float width = 0f)
+        {
+            var rect = GUILayoutUtility.GetRect(0f, height, width, height);
+            EditorGUI.DrawRect(new Rect(rect.xMin, rect.yMin, rect.width, 1f), Color.black);
+            EditorGUI.DrawRect(new Rect(rect.xMin, rect.yMin, 1f, rect.height), Color.black);
+            EditorGUI.DrawRect(new Rect(rect.xMax, rect.yMin, -1f, rect.height), Color.black);
+        }
+
+
+        #endregion
+
+        public static GUIStyle GetStyle(string styleName)
             => EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).GetStyle(styleName);
-        
     }
 }
