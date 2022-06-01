@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace HuntroxGames.Utils
 {
-    public static class EditorUtils
+    public static class UtilsEditor
     {
         public static string[] GetCurrentScenesName()
         {
