@@ -109,6 +109,10 @@ namespace HuntroxGames.Utils
             transform.rotation = Quaternion.identity;
             transform.localScale = Vector3.one;
         }
+        public static void DestroyAllChildren(this Transform transform)
+        {
+            foreach (Transform child in transform) UnityEngine.Object.Destroy(child.gameObject);
+        }
         #endregion
     }
 }
