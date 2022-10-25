@@ -32,7 +32,7 @@ namespace HuntroxGames.Utils
         /// <param name="percent"></param>
         /// <returns></returns>
         public static int AdjustByPercent(this int value, float percent)
-            => Mathf.RoundToInt(((float)value * percent) + value);
+            => Mathf.RoundToInt((value * percent) + value);
 
         public static float Ratio(this float value, float maxValue)
             => (int)value / Mathf.Clamp(maxValue, Mathf.Epsilon, int.MaxValue);
@@ -120,6 +120,9 @@ namespace HuntroxGames.Utils
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = rotation;
         }
+        public static void ChangeDirection(this Rigidbody rb, Vector3 direction) 
+            => rb.velocity = direction.normalized * rb.velocity.magnitude;
+
         #endregion
     }
 }
