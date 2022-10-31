@@ -58,30 +58,4 @@ namespace HuntroxGames.Utils
             
         }
     }
-
-    [System.Serializable]
-    public struct BehaviorState
-    {
-        public bool wasDestroyed;
-        public List<FieldState> states;
-        public List<FieldState> customStates;
-    }
-
-    [System.Serializable]
-    public struct FieldState
-    {
-        public object data;
-        public string fieldName;
-    }
-
-    [System.Serializable]
-    public class SaveFile
-    {
-        public string saveDisplayName;
-        public List<string> destroyedObjects;
-        public List<string> createdObjects;
-        public List<string> saveData;
-        public string saveDate;
-        public string levelName;
-    }
 }
