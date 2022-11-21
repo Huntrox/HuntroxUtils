@@ -9,12 +9,13 @@ public class SpriteViewAttributeDrawer : PropertyDrawer
 {
 
     private SpriteViewAttribute att;
-    private float offset = 5f;
+    
+    private const float OFFSET = 5f;
+
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-        if(att == null)
-            att = (SpriteViewAttribute)attribute;
-        position.y -= (att.size / 2) - offset;
+        att ??= (SpriteViewAttribute)attribute;
+        position.y -= (att.size / 2) - OFFSET;
         EditorGUI.LabelField(position, label);
         //position.width -= 16;
         position.y += att.size/2;
@@ -29,8 +30,7 @@ public class SpriteViewAttributeDrawer : PropertyDrawer
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        if(att == null)
-            att = (SpriteViewAttribute)attribute;
-        return  att.size + offset;
+        att ??= (SpriteViewAttribute)attribute;
+        return  att.size + OFFSET;
     }
 }
