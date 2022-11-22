@@ -161,5 +161,6 @@ namespace HuntroxGames.Utils
 
         public static GUIStyle GetStyle(string styleName)
             => EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).GetStyle(styleName);
+        public static GUIStyle ButtonStyle = new GUIStyle(GUI.skin.button) { richText = true };
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace HuntroxGames.Utils
@@ -26,5 +24,19 @@ namespace HuntroxGames.Utils
         private void OnStringChanged()
             => Debug.Log("String Field Has Changed");
 
+
+        [Button]
+        private void ButtonMethodWithParam(string param)
+        {
+            
+        }
+        
+        [Button]
+        private void TestButtonAttribute()
+            => Debug.Log("TestButtonAttribute Clicked");
+
+        [Button("MY BUTTON")]
+        private void TestButtonAttributeWithName()
+            => Debug.Log("MY BUTTON Clicked");
     }
 }
