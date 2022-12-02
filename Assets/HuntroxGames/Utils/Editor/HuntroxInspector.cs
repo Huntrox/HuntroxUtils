@@ -25,7 +25,7 @@ namespace HuntroxGames.Utils
             buttonMethods = GetAllMethods(target, m => m.GetCustomAttributes(typeof(ButtonAttribute), true).Length > 0);
             foreach (var field in fields)
             {
-                List<MethodInfo> methods = new List<MethodInfo>();
+                var methods = new List<MethodInfo>();
                 foreach (var @obj in field.GetCustomAttributes(typeof(OnValueChangedAttribute), true))
                 {
                     var att = (OnValueChangedAttribute)@obj;
@@ -60,6 +60,7 @@ namespace HuntroxGames.Utils
 
         private static void Button(UnityEngine.Object target,MethodInfo info)
         {
+            
             if (!info.GetParameters().All(p => p.IsOptional))
             {
                 var msg = $"{nameof(ButtonAttribute)} works only on methods with no parameters";
@@ -71,7 +72,7 @@ namespace HuntroxGames.Utils
             
             if (GUILayout.Button(methodName, EditorStyleExtensions.ButtonStyle))
             {
-                object[] defaultParams = info.GetParameters().Select(p => p.DefaultValue).ToArray();
+                var defaultParams = info.GetParameters().Select(p => p.DefaultValue).ToArray();
                 var methodResult = (IEnumerator)info.Invoke(target, defaultParams);
                 
                 if (methodResult != null && target is MonoBehaviour behaviour)
@@ -89,7 +90,7 @@ namespace HuntroxGames.Utils
                 yield break;
             }
 
-            List<Type> types = new List<Type>()
+            var types = new List<Type>()
             {
                 target.GetType()
             };
@@ -99,9 +100,9 @@ namespace HuntroxGames.Utils
                 types.Add(types.Last().BaseType);
             }
 
-            for (int i = types.Count - 1; i >= 0; i--)
+            for (var i = types.Count - 1; i >= 0; i--)
             {
-                IEnumerable<FieldInfo> fieldInfos = types[i]
+                var fieldInfos = types[i]
                     .GetFields(BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic |
                                BindingFlags.Public | BindingFlags.DeclaredOnly)
                     .Where(predicate);
@@ -120,7 +121,7 @@ namespace HuntroxGames.Utils
                 return null;
             }
 
-            IEnumerable<MethodInfo> methodInfos = target.GetType()
+            var methodInfos = target.GetType()
                 .GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public)
                 .Where(predicate);
 
