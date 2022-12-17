@@ -66,7 +66,8 @@ namespace HuntroxGames.Utils
 
             return compon as T;
         }
-
+        
+        #region Color
         public static void SetAlpha(this SpriteRenderer spriteRenderer, float alpha)
         {
             var color = spriteRenderer.color;
@@ -79,11 +80,38 @@ namespace HuntroxGames.Utils
             color.a = alpha;
             graphic.color = color;
         }
+        public static Color SetRed(this Color color,float red)
+            => new Color(red,color.g,color.b,color.a);
+        public static Color SetGreen(this Color color,float green)
+            => new Color(color.r,green,color.b,color.a);
+        public static Color SetBlue(this Color color,float blue)
+            => new Color(color.r,color.g,blue,color.a);
+
         public static Color SetAlpha(this Color color,float alpha)
             => new Color(color.r,color.g,color.b,alpha);
       
+        public static Color SetHue(this Color color, float h)
+        {
+            Color.RGBToHSV(color, out var _, out var s, out var v);
+            color = Color.HSVToRGB(h, s, v);
+            return color;
+        }
+        public static Color SetSaturation(this Color color, float s)
+        {
+            Color.RGBToHSV(color, out var h, out var _, out var v);
+            color = Color.HSVToRGB(h, s, v);
+            return color;
+        }
+        public static Color SetValue(this Color color, float v)
+        {
+            Color.RGBToHSV(color, out var h, out var s, out var _);
+            color = Color.HSVToRGB(h, s, v);
+            return color;
+        }
+
         
-        
+
+        #endregion
         public static bool IsTouching(this Collider2D collider, Collider2D other) 
             => collider.IsTouching(other.bounds);
         public static bool IsTouching(this Collider2D collider, Bounds other) 
