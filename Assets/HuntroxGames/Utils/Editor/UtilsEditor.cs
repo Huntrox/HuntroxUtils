@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class UtilsEditor
     {
         public static string[] GetCurrentScenesName()
