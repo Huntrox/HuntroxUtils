@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class VectorExtensionMethods 
     {
 
