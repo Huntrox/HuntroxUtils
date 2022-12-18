@@ -5,12 +5,14 @@ using UnityEngine.UI;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using JetBrains.Annotations;
 using UnityEngine.Rendering;
 using TMPro;
 using UnityEngine.Tilemaps;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class DoTweenExtension
     {
         #region Text
