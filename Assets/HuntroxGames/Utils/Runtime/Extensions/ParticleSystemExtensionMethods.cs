@@ -1,7 +1,9 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class ParticleSystemExtensionMethods 
     {
         public static float GetEmissionRate(this ParticleSystem particleSystem)
