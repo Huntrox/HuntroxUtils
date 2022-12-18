@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class CollectionsExtensionMethods
     {
         public static T Closest<T>(this IEnumerable<T> list, Vector3 currentPosition) where T : Component
