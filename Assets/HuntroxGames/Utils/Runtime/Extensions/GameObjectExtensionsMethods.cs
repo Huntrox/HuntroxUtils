@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class GameObjectExtensionsMethods
     {
         
