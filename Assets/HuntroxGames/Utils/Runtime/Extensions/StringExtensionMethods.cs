@@ -1,8 +1,10 @@
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class StringExtensionMethods
     {
         
