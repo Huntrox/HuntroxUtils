@@ -1,8 +1,10 @@
-﻿using UnityEditor;
+﻿using JetBrains.Annotations;
+using UnityEditor;
 using UnityEngine;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class EditorStyleExtensions
     {
         #region DrawHeader
