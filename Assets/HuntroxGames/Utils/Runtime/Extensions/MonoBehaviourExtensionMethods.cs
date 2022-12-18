@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class MonoBehaviourExtensionMethods 
     {
         
