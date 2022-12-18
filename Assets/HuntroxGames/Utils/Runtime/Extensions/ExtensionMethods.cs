@@ -1,9 +1,11 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace HuntroxGames.Utils
 {
+    [PublicAPI]
     public static class ExtensionMethods
     {
         #region FloatExtension
