@@ -11,7 +11,8 @@ using Sirenix.OdinInspector;
 namespace HuntroxGames.Utils
 {
     [Serializable]
-    public class GenericRng<T> 
+    // ReSharper disable once InconsistentNaming
+    public class GenericRNG<T> 
     {
         private List<T> rngItems;
         private Dictionary<int, (T type,int weight)> cachedElements;
@@ -21,7 +22,7 @@ namespace HuntroxGames.Utils
         public List<RngElement<T>> tableEntries =new List<RngElement<T>>();
         //random hash code
         public const int EMPTY_HASH_CODE = 65465478;
-        public GenericRng()
+        public GenericRNG()
         {
             cachedElements = new Dictionary<int,  (T type,int weight)>();
             rngItems = new List<T>();
