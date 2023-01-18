@@ -10,7 +10,7 @@ namespace HuntroxGames.Utils.UI
         float Progress { get; }
         Transform transform { get; }
         void RestLoadingScreen();
-        void OnShow(Action callback);
+        IEnumerator OnShow(Action callback);
         IEnumerator OnHide(Action callback);
         void UpdateProgress(float progress);
     }
