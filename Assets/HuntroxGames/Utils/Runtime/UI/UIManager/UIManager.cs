@@ -67,8 +67,9 @@ namespace HuntroxGames.Utils.UI
                 var loadingOperation = SceneManager.LoadSceneAsync(sceneName);
 
                 loadingScreen.IsLoading = true;
-                loadingScreen.OnShow(null);
                 onLoadingStarted?.Invoke();
+                yield return StartCoroutine(loadingScreen.OnShow(null));
+                
                 while (!loadingOperation.isDone)
                 {
                     loadingScreen.UpdateProgress(loadingOperation.progress);
