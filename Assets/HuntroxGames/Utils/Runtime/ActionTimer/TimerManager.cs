@@ -7,15 +7,10 @@ namespace HuntroxGames.Utils
 {
     public class TimerManager : Singleton<TimerManager>
     {
-        private List<ActionTimer> timers = new List<ActionTimer>();
+        private readonly List<ActionTimer> timers = new List<ActionTimer>();
         
-        private Queue<ActionTimer> queueForRemoval = new Queue<ActionTimer>();
-        private Queue<ActionTimer> queueForAdding = new Queue<ActionTimer>();
-        protected override void Awake()
-        {
-            base.Awake();
-            
-        }
+        private readonly Queue<ActionTimer> queueForRemoval = new Queue<ActionTimer>();
+        private readonly Queue<ActionTimer> queueForAdding = new Queue<ActionTimer>();
 
         private void Update()
         {
