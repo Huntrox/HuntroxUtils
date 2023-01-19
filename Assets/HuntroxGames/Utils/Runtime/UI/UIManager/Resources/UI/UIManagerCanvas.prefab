@@ -120,6 +120,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 474079867562326616}
     m_Modifications:
+    - target: {fileID: 768121346068334691, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768121346068334691, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 768121346068334691, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2770442354187703028, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -204,9 +216,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5246926900120591317, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6665031871043682181, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
       propertyPath: m_Name
       value: BasicLoadingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000702232955911818, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000702232955911818, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000702232955911818, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a89239835ddcd9418f593a3d51f9ba2, type: 3}

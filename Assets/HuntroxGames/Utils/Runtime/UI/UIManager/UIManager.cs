@@ -32,6 +32,7 @@ namespace HuntroxGames.Utils.UI
             
         protected override void Awake()
         {
+            loadingScreen = GetComponentInChildren<ILoadingScreen>();
             if (instance == null)
             {
                 instance = this;
