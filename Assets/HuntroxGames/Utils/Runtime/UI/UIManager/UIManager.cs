@@ -26,6 +26,7 @@ namespace HuntroxGames.Utils.UI
 
         
         [SerializeField] private ILoadingScreen loadingScreen;
+        [SerializeField] private PopupsManager popupsManager;
 
 
         public ILoadingScreen LoadingScreen => loadingScreen;
