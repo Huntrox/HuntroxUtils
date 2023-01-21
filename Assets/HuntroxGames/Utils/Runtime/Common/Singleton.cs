@@ -34,9 +34,7 @@ namespace HuntroxGames.Utils
 					DontDestroyOnLoad(gameObject);
 			}
 			else
-			{
 				Destroy(gameObject);
-			}
 		}
 	}
 }
