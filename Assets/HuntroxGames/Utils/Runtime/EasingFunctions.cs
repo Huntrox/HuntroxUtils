@@ -6,6 +6,41 @@ namespace HuntroxGames.Utils
     [PublicAPI]
     public static class EasingFunctions
     {
+        public enum Ease
+        {
+            Linear,
+            InQuad,
+            OutQuad,
+            InOutQuad,
+            InCubic,
+            OutCubic,
+            InOutCubic,
+            InQuart,
+            OutQuart,
+            InOutQuart,
+            InQuint,
+            OutQuint,
+            InOutQuint,
+            InSine,
+            OutSine,
+            InOutSine,
+            InExpo,
+            OutExpo,
+            InOutExpo,
+            InCirc,
+            OutCirc,
+            InOutCirc,
+            InElastic,
+            OutElastic,
+            InOutElastic,
+            InBack,
+            OutBack,
+            InOutBack,
+            InBounce,
+            OutBounce,
+            InOutBounce,
+        }
+
         public static float Linear(float t) => t;
 
         public static float InQuad(float t) => t * t;
