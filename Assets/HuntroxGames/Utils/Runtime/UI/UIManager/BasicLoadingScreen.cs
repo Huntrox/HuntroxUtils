@@ -61,8 +61,8 @@ namespace HuntroxGames.Utils
             {
                 time += Time.deltaTime;
                 var t = time ;
-                var alpha = Mathf.Lerp(start, endValue,time);
-                Debug.Log($"alph:{alpha} time:{t}" );
+                var alpha = Mathf.Lerp(start, endValue,EasingFunctions.Evaluate(time,EasingFunctions.Ease.InOutSine));
+                Debug.Log($"alpha:{alpha} time:{t}");
                 group.alpha = alpha;
                 yield return null;
             }
