@@ -41,7 +41,46 @@ namespace HuntroxGames.Utils
             InOutBounce,
         }
 
-        public static float Linear(float t) => t;
+        public static float Evaluate(float t, Ease ease = Ease.Linear)
+        {
+            return ease switch
+            {
+                Ease.Linear => Linear(t),
+                Ease.InQuad => InQuad(t),
+                Ease.OutQuad => OutQuad(t),
+                Ease.InOutQuad => InOutQuad(t),
+                Ease.InCubic => InCubic(t),
+                Ease.OutCubic => OutCubic(t),
+                Ease.InOutCubic => InOutCubic(t),
+                Ease.InQuart => InQuart(t),
+                Ease.OutQuart => OutQuart(t),
+                Ease.InOutQuart => InOutQuart(t),
+                Ease.InQuint => InQuint(t),
+                Ease.OutQuint => OutQuint(t),
+                Ease.InOutQuint => InOutQuint(t),
+                Ease.InSine => InSine(t),
+                Ease.OutSine => OutSine(t),
+                Ease.InOutSine => InOutSine(t),
+                Ease.InExpo => InExpo(t),
+                Ease.OutExpo => OutExpo(t),
+                Ease.InOutExpo => InOutExpo(t),
+                Ease.InCirc => InCirc(t),
+                Ease.OutCirc => OutCirc(t),
+                Ease.InOutCirc => InOutCirc(t),
+                Ease.InElastic => InElastic(t),
+                Ease.OutElastic => OutElastic(t),
+                Ease.InOutElastic => InOutElastic(t),
+                Ease.InBack => InBack(t),
+                Ease.OutBack => OutBack(t),
+                Ease.InOutBack => InOutBack(t),
+                Ease.InBounce => InBounce(t),
+                Ease.OutBounce => OutBounce(t),
+                Ease.InOutBounce => InOutBounce(t),
+                _ => t
+            };
+        }
+
+    public static float Linear(float t) => t;
 
         public static float InQuad(float t) => t * t;
         public static float OutQuad(float t) => 1 - InQuad(1 - t);
