@@ -56,15 +56,17 @@ namespace HuntroxGames.Utils
         private IEnumerator CanvasGroupAlphaTween(CanvasGroup group, float endValue, float duration)
         {
             var time = 0f;
-            while (Math.Abs(group.alpha - endValue) > float.Epsilon)
+            var start = group.alpha;
+            while (time < duration)
             {
-                time += Time.deltaTime * duration;
-                var alpha = Mathf.Lerp(group.alpha, endValue, time);
+                time += Time.deltaTime;
+                var t = time ;
+                var alpha = Mathf.Lerp(start, endValue,time);
+                Debug.Log($"alph:{alpha} time:{t}" );
                 group.alpha = alpha;
                 yield return null;
             }
         }
-
-
+        
     }
 }
