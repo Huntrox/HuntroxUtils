@@ -1,4 +1,3 @@
-using System;
 using HuntroxGames.Utils.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,10 +10,7 @@ namespace HuntroxGames.Utils
         public Image image;
         public EasingFunctions.Ease ease;
         [ContextMenu("TEST")]
-        public void Start()
-        {
-            image.DoFade(0f, 2f,ease);
-        }
+        public void Start() => image.TweenAlpha(0f, 2f,ease).OnComplete(()=> Debug.Log("Completed"));
 
         private void Update()
         {
