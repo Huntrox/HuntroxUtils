@@ -11,8 +11,10 @@ namespace HuntroxGames.Utils
         private float elapsedTime;
         private bool isKilled;
         
+        
         public float duration;
 
+        
         public float Position => position;
         public bool IsKilled => isKilled;
 
@@ -22,7 +24,7 @@ namespace HuntroxGames.Utils
 
         public bool isActive;
         public bool isComplete;
-        
+        public Component source;
         public EasingFunctions.Ease ease;
 
         public YieldInstruction Yield()
@@ -92,32 +94,33 @@ namespace HuntroxGames.Utils
     [PublicAPI]
     public abstract class Tweener<T> : Tween where T : struct
     {
-        public TweenGetter<T> getter;
-        public TweenSetter<T> setter;
+        public TweenValueGetter<T> valueGetter;
+        public TweenValueSetter<T> valueSetter;
         public T startValue;
         public T currentValue;
         public T endValue;
 
-        protected Tweener(TweenGetter<T> getter, TweenSetter<T> setter, T endValue, float duration,
+        protected Tweener(TweenValueGetter<T> valueGetter, TweenValueSetter<T> valueSetter, T endValue, float duration,
             EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
         {
-            this.getter = getter;
-            this.setter = setter;
+            this.valueGetter = valueGetter;
+            this.valueSetter = valueSetter;
             this.endValue = endValue;
             this.duration = duration;
             this.ease = ease;
-            this.startValue = this.getter();
+            this.startValue = this.valueGetter();
+            isActive = true;
         }
 
         protected override void TweenComplete()
         {
-            setter(endValue);
+            valueSetter(endValue);
             base.TweenComplete();
         }
         
     }
 
-    public delegate T TweenGetter<out T>();
-    public delegate void TweenSetter<in T>(T newValue);
+    public delegate T TweenValueGetter<out T>();
+    public delegate void TweenValueSetter<in T>(T newValue);
 
 }
