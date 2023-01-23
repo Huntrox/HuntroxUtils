@@ -10,7 +10,7 @@ namespace HuntroxGames.Utils
         public Image image;
         public EasingFunctions.Ease ease;
         [ContextMenu("TEST")]
-        public void Start() => image.TweenAlpha(0f, 2f,ease).OnComplete(()=> Debug.Log("Completed"));
+        public void Start() => image.TweenAlpha(0f, 2f).SetEase(ease).OnComplete(()=> Debug.Log("Completed"));
 
         private void Update()
         {
