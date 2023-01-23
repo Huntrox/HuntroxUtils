@@ -30,15 +30,15 @@ namespace HuntroxGames.Utils
 
         public IEnumerator OnShow(Action callback)
         {
-            StartCoroutine(CanvasGroupAlphaTween(bgLayerGroup, 1, fadeDuration));
-            yield return StartCoroutine(CanvasGroupAlphaTween(loadingGroup, 1, fadeDuration));
+            bgLayerGroup.TweenAlpha(1f, fadeDuration);
+            yield return loadingGroup.TweenAlpha(1f, fadeDuration).Yield();
             
         }
 
         public IEnumerator OnHide(Action callback)
         {
-            StartCoroutine(CanvasGroupAlphaTween(bgLayerGroup, 0, fadeDuration));
-            yield return StartCoroutine(CanvasGroupAlphaTween(loadingGroup, 0, fadeDuration));
+            bgLayerGroup.TweenAlpha(0, fadeDuration);
+            yield return loadingGroup.TweenAlpha(0, fadeDuration).Yield();
             bgLayerGroup.alpha = 0;
             loadingGroup.alpha = 0;
             progressBar.transform.localScale = new Vector3(0, 1, 1);
@@ -53,20 +53,7 @@ namespace HuntroxGames.Utils
         }
 
 
-        private IEnumerator CanvasGroupAlphaTween(CanvasGroup group, float endValue, float duration)
-        {
-            var time = 0f;
-            var start = group.alpha;
-            while (time < duration)
-            {
-                time += Time.deltaTime;
-                var t = time ;
-                var alpha = Mathf.Lerp(start, endValue,EasingFunctions.Evaluate(time,EasingFunctions.Ease.InOutSine));
-                Debug.Log($"alpha:{alpha} time:{t}");
-                group.alpha = alpha;
-                yield return null;
-            }
-        }
+
         
     }
 }
