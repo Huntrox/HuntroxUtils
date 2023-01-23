@@ -9,11 +9,18 @@ namespace HuntroxGames.Utils
     {
         public ExtendedButton button;
         public EasingFunctions.Ease ease;
+        public Transform trans;
+        [Range(0,1)] public float test = 0;
+        private Tween tween;
 
         public void Start()
         {
-            button.onClick.AddListener(() => StartCoroutine(TestTweenYield()));
-            
+            button.onClick.AddListener(() =>
+            {
+                StartCoroutine(TestTweenYield());
+                tween.SetTweenPosition(test);
+            });
+            tween = trans.TweenPosition(new Vector3(5, 5, 0), 5);
             button.onEnter.AddListener(() =>
             {
                 button.GetComponent<RectTransform>().TweenScale(new Vector3(1.5f, 1.5f, 1.5f), 0.25f).SetEase(ease);
@@ -24,7 +31,6 @@ namespace HuntroxGames.Utils
                 button.GetComponent<RectTransform>().TweenScale(Vector3.one, 0.25f);
                 button.GetComponent<Image>().TweenColor(Color.white, 0.25f);
             });
-            
         }
 
         private IEnumerator TestTweenYield()
