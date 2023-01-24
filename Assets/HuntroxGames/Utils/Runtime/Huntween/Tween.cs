@@ -30,7 +30,7 @@ namespace HuntroxGames.Utils
         public YieldInstruction Yield()
         {
             return TweenManager.Instance.StartCoroutine(
-                TweenManager.WaitForTween(this));
+                TweenManager.Instance.WaitForTween(this));
         }
 
         public Tween OnComplete(Action action)
@@ -69,6 +69,7 @@ namespace HuntroxGames.Utils
         }
         public virtual void Update(float delta)
         {
+        
             if (!isActive || isComplete)
                 return;
             if (elapsedTime < duration)

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using HuntroxGames.Utils.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace HuntroxGames.Utils
+
 {
     public class TweenExamples : MonoBehaviour
     {
@@ -31,8 +33,8 @@ namespace HuntroxGames.Utils
                 button.GetComponent<RectTransform>().TweenScale(Vector3.one, 0.25f);
                 button.GetComponent<Image>().TweenColor(Color.white, 0.25f);
             });
+            
         }
-
         private IEnumerator TestTweenYield()
         {
             Debug.Log("Started");

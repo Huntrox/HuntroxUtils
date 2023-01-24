@@ -13,6 +13,7 @@ namespace HuntroxGames.Utils
         {
             currentValue = Color.Lerp(startValue, endValue, EasingFunctions.Evaluate(Position, ease));
             valueSetter(currentValue);
+            
         }
     }
 }

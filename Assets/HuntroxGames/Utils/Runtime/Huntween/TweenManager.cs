@@ -6,10 +6,13 @@ namespace HuntroxGames.Utils
 {
     public class TweenManager : Singleton<TweenManager>
     {
-        private readonly List<Tween> tweens = new List<Tween>();
-        private readonly Dictionary<object, List<Tween>> tweenDict = new Dictionary<object, List<Tween>>();
+        //TODO: Add Tween Pooling
+        
         private bool isActive;
-        private List<Tween> queueForAdd = new List<Tween>();
+        
+        private readonly List<Tween> activeTweens = new List<Tween>();
+        private readonly Dictionary<object, List<Tween>> tweenDict = new Dictionary<object, List<Tween>>();
+        private readonly List<Tween> queueForAdd = new List<Tween>();
 
         protected override void Awake()
         {
@@ -31,24 +34,42 @@ namespace HuntroxGames.Utils
 
         private void Update()
         {
-
+    
             for (int i = 0; i < queueForAdd.Count; i++) 
-                tweens.Add(queueForAdd[i]);
+                activeTweens.Add(queueForAdd[i]);
             
             var finishedTweens = new List<Tween>();
-            for (var i = 0; i < tweens.Count; i++)
+            
+            //loop through all active tweens in tweens dictionary  and update
+                
+            
+                
+            for (var i = 0; i < activeTweens.Count; i++)
             {
                 var index = i;
-                var tween = tweens[index];
-                tween.Update(Time.deltaTime);
-                if(tween.isComplete || tween.IsKilled)
+                var tween = activeTweens[index];
+                if (tween.source.IsNull())
+                {
                     finishedTweens.Add(tween);
+                    continue;
+                }
+                tween.Update(Huntween.DeltaTime);
+                if (tween.isComplete || tween.IsKilled)
+                {
+                    finishedTweens.Add(tween);
+                    if (tweenDict.TryGetValue(tween.source, out var list))
+                    {
+                        list.Remove(tween);
+                        if (list.Count == 0)
+                            tweenDict.Remove(tween.source);
+                    }
+                }
             }
             
             for (var index = 0; index < finishedTweens.Count; index++)
             {
                 var tween = finishedTweens[index];
-                tweens.Remove(tween);
+                activeTweens.Remove(tween);
             }
 
 
@@ -58,9 +79,28 @@ namespace HuntroxGames.Utils
         public void AddTween(Tween t, object source = null)
         {
             t.isActive = true;
+            t.source = (Component)source;
             queueForAdd.Add(t);
+            if (source != null)
+            {
+                if (!tweenDict.ContainsKey(source))
+                    tweenDict.Add(source, new List<Tween>());
+                tweenDict[source].Add(t);
+            }
+
         }
-        public static IEnumerator WaitForTween(Tween t)
+        public void KillTween(object source)
+        {
+            if (!tweenDict.TryGetValue(source, out var list)) return;
+            foreach (var tween in list) tween.KillTween();
+        }
+        public void CompleteTween(object source)
+        {
+            if (!tweenDict.TryGetValue(source, out var list)) return;
+            foreach (var tween in list) tween.CompleteTween();
+        }
+
+        public  IEnumerator WaitForTween(Tween t)
         {
             while (t.isActive && !t.isComplete)
                 yield return null;
