@@ -66,12 +66,13 @@ namespace HuntroxGames.Utils.UI
             IEnumerator Load()
             {
                 yield return new WaitForFixedUpdate();
-                var loadingOperation = SceneManager.LoadSceneAsync(sceneName);
-
                 loadingScreen.IsLoading = true;
                 onLoadingStarted?.Invoke();
+                
                 yield return StartCoroutine(loadingScreen.OnShow(null));
                 
+                var loadingOperation = SceneManager.LoadSceneAsync(sceneName);
+         
                 while (!loadingOperation.isDone)
                 {
                     loadingScreen.UpdateProgress(loadingOperation.progress);

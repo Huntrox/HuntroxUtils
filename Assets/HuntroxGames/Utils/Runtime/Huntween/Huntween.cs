@@ -9,7 +9,10 @@ namespace HuntroxGames.Utils
     public static class Huntween
     {
         private static EasingFunctions.Ease defaultEase = EasingFunctions.Ease.Linear;
+        public static bool unScaledTime = false;
 
+        public static float DeltaTime => unScaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+        
 
         public static Tweener<Quaternion> TweenTo(TweenValueGetter<Quaternion> getterFunc,
             TweenValueSetter<Quaternion> setterFunc, Quaternion endValue, float duration, object source)

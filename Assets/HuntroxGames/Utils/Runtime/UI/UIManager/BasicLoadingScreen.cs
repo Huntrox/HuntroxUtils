@@ -32,7 +32,6 @@ namespace HuntroxGames.Utils
         {
             bgLayerGroup.TweenAlpha(1f, fadeDuration);
             yield return loadingGroup.TweenAlpha(1f, fadeDuration).Yield();
-            
         }
 
         public IEnumerator OnHide(Action callback)
