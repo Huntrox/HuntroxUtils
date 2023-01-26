@@ -99,6 +99,21 @@ namespace HuntroxGames.Utils
             if (!tweenDict.TryGetValue(source, out var list)) return;
             foreach (var tween in list) tween.CompleteTween();
         }
+        
+        public void KillAllTweens()
+        {
+            foreach (var tween in activeTweens) tween.KillTween();
+        }
+        public void CompleteAllTweens()
+        {
+            foreach (var tween in activeTweens) tween.CompleteTween();
+        }
+        public IEnumerable<Tween> GetActiveTweens(object source)
+        {
+            if (!tweenDict.TryGetValue(source, out var list)) yield break;
+            foreach (var tween in list) yield return tween;
+        }
+  
 
         public  IEnumerator WaitForTween(Tween t)
         {
