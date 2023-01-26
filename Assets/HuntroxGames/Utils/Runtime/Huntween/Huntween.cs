@@ -75,20 +75,21 @@ namespace HuntroxGames.Utils
         
         
         
-        public static float Lerp(float start, float end, float position, EasingFunctions.Ease ease) 
-            => Mathf.Lerp(start, end, EasingFunctions.Evaluate(position, ease));
-        public static int Lerp(int start, int end, float position, EasingFunctions.Ease ease)
-            => Mathf.RoundToInt(Mathf.Lerp(start, end, EasingFunctions.Evaluate(position, ease)));
-        public static Vector2 Lerp(Vector2 start, Vector2 end, float position, EasingFunctions.Ease ease)
-            => Vector2.Lerp(start, end, EasingFunctions.Evaluate(position, ease));
-        public static Vector3 Lerp(Vector3 start, Vector3 end, float position, EasingFunctions.Ease ease)
-            => Vector3.Lerp(start, end, EasingFunctions.Evaluate(position, ease));
-        public static Color Lerp(Color start, Color end, float position, EasingFunctions.Ease ease)
-            => Color.Lerp(start, end, EasingFunctions.Evaluate(position, ease));    
-        public static Quaternion Lerp(Quaternion start, Quaternion end, float position, EasingFunctions.Ease ease)
-            => Quaternion.Lerp(start, end, EasingFunctions.Evaluate(position, ease));
-        
-        
-        
+        public static float Lerp(float start, float end, float t) 
+            => Mathf.Lerp(start, end, t);
+        public static Vector2 Lerp(Vector2 start, Vector2 end, float t)
+            => Vector2.Lerp(start, end, t);
+        public static Vector3 Lerp(Vector3 start, Vector3 end, float t)
+            => Vector3.Lerp(start, end, t);
+        public static Color Lerp(Color start, Color end, float t)
+            => Color.Lerp(start, end, t);
+        public static Quaternion Lerp(Quaternion start, Quaternion end, float t)
+            => Quaternion.Lerp(start, end, t);
+        public static int Lerp(int start, int end, float t)
+            => Mathf.RoundToInt(Mathf.Lerp(start, end, t));
+
+
+
+
     }
 }

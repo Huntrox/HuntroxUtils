@@ -11,6 +11,7 @@ namespace HuntroxGames.Utils
         private float elapsedTime;
         private bool isKilled;
         
+        protected bool usingCurve;
         
         public float duration;
 
@@ -26,6 +27,11 @@ namespace HuntroxGames.Utils
         public bool isComplete;
         public Component source;
         public EasingFunctions.Ease ease;
+        public AnimationCurve curve;
+
+        
+        protected float EasedPosition 
+            => usingCurve ? curve.Evaluate(position) : EasingFunctions.Evaluate(position, ease);
 
         public YieldInstruction Yield()
         {
@@ -46,6 +52,12 @@ namespace HuntroxGames.Utils
         public Tween SetEase(EasingFunctions.Ease ease)
         {
             this.ease = ease;
+            return this;
+        }
+        public Tween SetEase(AnimationCurve ease)
+        {
+            this.curve = ease;
+            this.usingCurve = true;
             return this;
         }
 

@@ -11,6 +11,7 @@ namespace HuntroxGames.Utils
     {
         public ExtendedButton button;
         public EasingFunctions.Ease ease;
+        public AnimationCurve curve;
         public Transform trans;
         public string targetString;
         public TextMeshProUGUI testText;
@@ -47,7 +48,7 @@ namespace HuntroxGames.Utils
         private IEnumerator TestTweenYield()
         {
             Debug.Log("Started");
-            yield return transform.TweenPosition(new Vector3(5, 5, 5), 5).SetEase(EasingFunctions.Ease.InOutSine)
+            yield return transform.TweenPosition(new Vector3(5, 5, 5), 5).SetEase(curve)
                 .Yield();
             Debug.Log("Finished yield");
         }

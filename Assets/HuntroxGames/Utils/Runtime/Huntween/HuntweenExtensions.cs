@@ -18,6 +18,7 @@ namespace HuntroxGames.Utils
 
         #region Transform
 
+        //Local Position Tweens
         public static Tween TweenLocalPosition(this Transform transform, Vector3 endValue, float duration,
             EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
         {
@@ -25,7 +26,31 @@ namespace HuntroxGames.Utils
                 position => transform.localPosition = position, endValue, duration, transform);
             return tween;
         }
-
+        public static Tween TweenLocalPositionX(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.localPosition.x,
+                position => transform.localPosition = new Vector3(position, transform.localPosition.y,
+                    transform.localPosition.z), endValue, duration, transform);
+            return tween;
+        }
+        public static Tween TweenLocalPositionY(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.localPosition.y,
+                position => transform.localPosition = new Vector3(transform.localPosition.x, position,
+                    transform.localPosition.z), endValue, duration, transform);
+            return tween;
+        }
+        public static Tween TweenLocalPositionZ(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.localPosition.z,
+                position => transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y,
+                    position), endValue, duration, transform);
+            return tween;
+        }
+        //Position Tweens
         public static Tween TweenPosition(this Transform transform, Vector3 endValue, float duration,
             EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
         {
@@ -33,11 +58,51 @@ namespace HuntroxGames.Utils
                 endValue, duration, transform);
             return tween;
         }
-
+        public static Tween TweenPositionX(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.position.x, 
+                position => transform.position = new Vector3(position,transform.position.y,transform.position.z),
+                endValue, duration, transform);
+            return tween;
+        }
+        public static Tween TweenPositionY(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.position.y, 
+                position => transform.position = new Vector3(transform.position.x,position,transform.position.z),
+                endValue, duration, transform);
+            return tween;
+        }
+        public static Tween TweenPositionZ(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.position.z, 
+                position => transform.position = new Vector3(transform.position.x,transform.position.y,position),
+                endValue, duration, transform);
+            return tween;
+        }
+        // Scale Tweens
         public static Tween TweenScale(this Transform transform, Vector3 endValue, float duration,
             EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
         {
             var tween = Huntween.TweenTo(() => transform.localScale, position => transform.localScale = position,
+                endValue, duration, transform);
+            return tween;
+        }
+        public static Tween TweenScaleX(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.localScale.x, 
+                position => transform.localScale = new Vector3(position,transform.localScale.y,transform.localScale.z),
+                endValue, duration, transform);
+            return tween;
+        }
+        public static Tween TweenScaleY(this Transform transform, float endValue, float duration,
+            EasingFunctions.Ease ease = EasingFunctions.Ease.Linear)
+        {
+            var tween = Huntween.TweenTo(() => transform.localScale.y, 
+                position => transform.localScale = new Vector3(transform.localScale.x,position,transform.localScale.z),
                 endValue, duration, transform);
             return tween;
         }
@@ -53,6 +118,7 @@ namespace HuntroxGames.Utils
                 duration, rect);
             return tween;
         }
+        //public static Tween TweenAnchoredPosition(
 
         #endregion
 

@@ -28,7 +28,7 @@ namespace HuntroxGames.Utils
 
         protected override void UpdateValue()
         {
-            currentCharIndex = Huntween.Lerp(0, totalCharCount, Position, ease);
+            currentCharIndex = Huntween.Lerp(0, totalCharCount, EasedPosition);
             currentValue = endValue.Substring(0, currentCharIndex);
             valueSetter(currentValue);
         }

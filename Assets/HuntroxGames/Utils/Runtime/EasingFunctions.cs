@@ -1,5 +1,7 @@
 using System;
 using JetBrains.Annotations;
+using UnityEngine;
+
 //source: https://gist.github.com/Kryzarel/bba64622057f21a1d6d44879f9cd7bd4 by Kryzarel
 namespace HuntroxGames.Utils
 {
@@ -41,6 +43,9 @@ namespace HuntroxGames.Utils
             InOutBounce,
         }
 
+
+        public static float Evaluate(float t, AnimationCurve curve)
+            => curve.Evaluate(t);
         public static float Evaluate(float t, Ease ease = Ease.Linear)
         {
             return ease switch
