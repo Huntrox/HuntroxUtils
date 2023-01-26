@@ -14,6 +14,7 @@ namespace HuntroxGames.Utils
         public Transform trans;
         [Range(0,1)] public float test = 0;
         private Tween tween;
+        public int testIntVar = 0;
 
         public void Start()
         {
@@ -22,6 +23,10 @@ namespace HuntroxGames.Utils
                 StartCoroutine(TestTweenYield());
                 tween.SetTweenPosition(test);
             });
+
+            
+            Huntween.TweenTo(() => testIntVar,  x => testIntVar = x, 10, 5f, this);
+            
             tween = trans.TweenPosition(new Vector3(5, 5, 0), 5);
             button.onEnter.AddListener(() =>
             {

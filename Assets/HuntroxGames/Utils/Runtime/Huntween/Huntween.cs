@@ -13,7 +13,14 @@ namespace HuntroxGames.Utils
         
         public static float DeltaTime => Settings.unscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
         
-
+        
+        public static Tweener<int> TweenTo(TweenValueGetter<int> getterFunc, TweenValueSetter<int> setterFunc,
+            int endValue, float duration, object source)
+        {
+            var tween = new IntTweener(getterFunc, setterFunc, endValue, duration, Settings.defaultEase);
+            TweenManager.Instance.AddTween(tween, source);
+            return tween;
+        }
         public static Tweener<Quaternion> TweenTo(TweenValueGetter<Quaternion> getterFunc,
             TweenValueSetter<Quaternion> setterFunc, Quaternion endValue, float duration, object source)
         {
@@ -52,7 +59,5 @@ namespace HuntroxGames.Utils
             TweenManager.Instance.AddTween(tween, source);
             return tween;
         }
-
-
     }
 }
