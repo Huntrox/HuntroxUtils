@@ -13,7 +13,13 @@ namespace HuntroxGames.Utils
         
         public static float DeltaTime => Settings.unscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
         
-        
+        public static StringTweener TweenTo(TweenValueGetter<string> getterFunc, TweenValueSetter<string> setterFunc,
+            string endValue, float duration, object source)
+        {
+            var tween = new StringTweener(getterFunc, setterFunc, endValue, duration, Settings.defaultEase);
+            TweenManager.Instance.AddTween(tween, source);
+            return tween;
+        }
         public static Tweener<int> TweenTo(TweenValueGetter<int> getterFunc, TweenValueSetter<int> setterFunc,
             int endValue, float duration, object source)
         {

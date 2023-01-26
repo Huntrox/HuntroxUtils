@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using HuntroxGames.Utils.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +12,9 @@ namespace HuntroxGames.Utils
         public ExtendedButton button;
         public EasingFunctions.Ease ease;
         public Transform trans;
+        public string targetString;
+        public TextMeshProUGUI testText;
+
         [Range(0,1)] public float test = 0;
         private Tween tween;
         public int testIntVar = 0;
@@ -23,9 +26,10 @@ namespace HuntroxGames.Utils
                 StartCoroutine(TestTweenYield());
                 tween.SetTweenPosition(test);
             });
-
-            
+          
+                                
             Huntween.TweenTo(() => testIntVar,  x => testIntVar = x, 10, 5f, this);
+            Huntween.TweenTo(() => testText.text, x => testText.text = x, targetString, 2f, this).SetEase(ease);
             
             tween = trans.TweenPosition(new Vector3(5, 5, 0), 5);
             button.onEnter.AddListener(() =>
