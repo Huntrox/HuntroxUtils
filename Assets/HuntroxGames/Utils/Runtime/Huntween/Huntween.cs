@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -12,6 +12,13 @@ namespace HuntroxGames.Utils
         public static HuntweenSettings Settings => settings ? settings : settings = Resources.Load<HuntweenSettings>("HuntweenSettings");
         
         public static float DeltaTime => Settings.unscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+
+        public static void KillAllTweens() =>
+            TweenManager.Instance.KillAllTweens();
+        public static void CompleteAllTweens() =>
+            TweenManager.Instance.CompleteAllTweens();
+        public static IEnumerable<Tween> GetAllActiveTweens(object source)
+            => TweenManager.Instance.GetActiveTweens(source);
         
         public static StringTweener TweenTo(TweenValueGetter<string> getterFunc, TweenValueSetter<string> setterFunc,
             string endValue, float duration, object source)
