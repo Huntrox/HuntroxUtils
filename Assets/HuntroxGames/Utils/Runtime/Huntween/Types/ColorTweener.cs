@@ -11,9 +11,8 @@ namespace HuntroxGames.Utils
 
         protected override void UpdateValue()
         {
-            currentValue = Color.Lerp(startValue, endValue, EasingFunctions.Evaluate(Position, ease));
+            currentValue = Huntween.Lerp(startValue, endValue, Position, ease);
             valueSetter(currentValue);
-            
         }
     }
 }

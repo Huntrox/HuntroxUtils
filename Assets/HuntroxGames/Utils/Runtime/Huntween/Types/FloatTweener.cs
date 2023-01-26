@@ -12,9 +12,8 @@ namespace HuntroxGames.Utils
         
         protected override void UpdateValue()
         {
-            currentValue = Mathf.Lerp(startValue, endValue, EasingFunctions.Evaluate(Position, ease));
+            currentValue = Huntween.Lerp(startValue, endValue, Position, ease);
             valueSetter(currentValue);
-            
         }
     }
 }

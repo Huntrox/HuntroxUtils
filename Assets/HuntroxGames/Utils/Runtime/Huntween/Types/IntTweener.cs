@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace HuntroxGames.Utils
+﻿namespace HuntroxGames.Utils
 {
     public class IntTweener : Tweener<int>
     {
@@ -12,7 +10,7 @@ namespace HuntroxGames.Utils
         
         protected override void UpdateValue()
         {
-            currentValue = Mathf.RoundToInt(Mathf.Lerp(startValue, endValue, EasingFunctions.Evaluate(Position, ease)));
+            currentValue = Huntween.Lerp(startValue, endValue, Position, ease);
             valueSetter(currentValue);
             
         }

@@ -4,11 +4,11 @@ namespace HuntroxGames.Utils
 {
     public class StringTweener : Tween
     {
-        private int totalCharCount;
+        private readonly int totalCharCount;
         private int currentCharIndex;
         public string startValue;
         public string currentValue;
-        public string endValue;
+        public readonly string endValue;
         public TweenValueGetter<string> valueGetter;
         public TweenValueSetter<string> valueSetter;
             
@@ -28,7 +28,7 @@ namespace HuntroxGames.Utils
 
         protected override void UpdateValue()
         {
-            currentCharIndex = Mathf.RoundToInt(Mathf.Lerp(0, totalCharCount, EasingFunctions.Evaluate(Position, ease)));
+            currentCharIndex = Huntween.Lerp(0, totalCharCount, Position, ease);
             currentValue = endValue.Substring(0, currentCharIndex);
             valueSetter(currentValue);
         }
