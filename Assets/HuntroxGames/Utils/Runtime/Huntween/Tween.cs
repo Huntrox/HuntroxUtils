@@ -28,6 +28,11 @@ namespace HuntroxGames.Utils
         public Component source;
         public EasingFunctions.Ease ease;
         public AnimationCurve curve;
+        public LoopType loopType;
+        public int loopCount;
+        public int currentLoop;
+        
+        
 
         
         protected float EasedPosition 
@@ -135,5 +140,12 @@ namespace HuntroxGames.Utils
 
     public delegate T TweenValueGetter<out T>();
     public delegate void TweenValueSetter<in T>(T newValue);
+    
+    public enum LoopType
+    {
+        Restart,
+        PingPong,
+        Incremental
+    }
 
 }
