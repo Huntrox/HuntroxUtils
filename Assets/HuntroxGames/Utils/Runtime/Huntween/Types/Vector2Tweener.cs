@@ -13,6 +13,9 @@ namespace HuntroxGames.Utils
         {
             currentValue = Huntween.Lerp(startValue, endValue, EasedPosition);
             valueSetter(currentValue);
-        }   
+        }
+
+        protected override bool TargetReached() 
+            => (endValue - currentValue).sqrMagnitude < 0.0001f;
     }
 }

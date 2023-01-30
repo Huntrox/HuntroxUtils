@@ -22,6 +22,7 @@ namespace HuntroxGames.Utils
             this.ease = ease;
             this.startValue = this.valueGetter();
             this.valueSetter(string.Empty);
+            currentValue = string.Empty;
             totalCharCount = endValue.Length;
             isActive = true;
         }
@@ -32,5 +33,8 @@ namespace HuntroxGames.Utils
             currentValue = endValue.Substring(0, currentCharIndex);
             valueSetter(currentValue);
         }
+
+        protected override bool TargetReached()
+            => currentValue.Equals(endValue);
     }
 }

@@ -86,10 +86,10 @@ namespace HuntroxGames.Utils
         }
         public virtual void Update(float delta)
         {
-        
+
             if (!isActive || isComplete)
                 return;
-            if (elapsedTime < duration)
+            if (elapsedTime < duration && !TargetReached())
             {
                 elapsedTime += delta;
                 position = elapsedTime / duration;
@@ -107,6 +107,8 @@ namespace HuntroxGames.Utils
             isComplete = true;
             onComplete?.Invoke();
         }
+
+        protected virtual bool TargetReached() => false;
 
     }
     [PublicAPI]

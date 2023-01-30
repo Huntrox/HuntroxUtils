@@ -6,7 +6,7 @@ namespace HuntroxGames.Utils
 {
     public class TweenManager : Singleton<TweenManager>
     {
-        //TODO: Add Tween Pooling
+        //TODO: pool tweens
         
         private bool isActive;
         
