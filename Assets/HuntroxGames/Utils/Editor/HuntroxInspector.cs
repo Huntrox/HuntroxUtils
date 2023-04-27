@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace HuntroxGames.Utils
 {
     [CanEditMultipleObjects]
     [CustomEditor(typeof(UnityEngine.Object), true)]
+    [PublicAPI]
     public class HuntroxInspector : Editor
     {
 
