@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -154,5 +155,53 @@ namespace HuntroxGames.Utils
             => rb.velocity = direction.normalized * rb.velocity.magnitude;
 
         #endregion
+
+        #region RectTransfrom
+
+
+        public static void SetRectAnchor(this RectTransform rectTransform, AnchorPresets anchor, Vector2 offset)
+        {
+            rectTransform.pivot = anchorPivots[anchor];
+            rectTransform.anchorMin = rectTransform.anchorMax = anchorPivots[anchor];
+            rectTransform.anchoredPosition = offset;
+                
+                    if (anchor == AnchorPresets.StretchAll)
+                    {
+                        rectTransform.anchorMin = Vector2.zero;
+                        rectTransform.anchorMax = Vector2.one;
+                        rectTransform.sizeDelta = Vector2.zero;
+                    }
+
+        }
+
+        private static Dictionary<AnchorPresets, Vector2> anchorPivots = new Dictionary<AnchorPresets, Vector2>()
+        {
+            { AnchorPresets.TopLeft, new Vector2(0, 1) },
+            { AnchorPresets.TopCenter, new Vector2(0.5f, 1) },
+            { AnchorPresets.TopRight, new Vector2(1, 1) },
+            { AnchorPresets.MiddleLeft, new Vector2(0, 0.5f) },
+            { AnchorPresets.MiddleCenter, new Vector2(0.5f, 0.5f) },
+            { AnchorPresets.MiddleRight, new Vector2(1, 0.5f) },
+            { AnchorPresets.BottomLeft, new Vector2(0, 0) },
+            { AnchorPresets.BottomCenter, new Vector2(0.5f, 0) },
+            { AnchorPresets.BottomRight, new Vector2(1, 0) },
+            { AnchorPresets.StretchAll, new Vector2(0.5f, 0.5f) }
+        };
+
+
+        #endregion
+    }
+    public enum AnchorPresets
+    {
+        TopLeft,
+        TopCenter,
+        TopRight,
+        MiddleLeft,
+        MiddleCenter,
+        MiddleRight,
+        BottomLeft,
+        BottomCenter,
+        BottomRight,
+        StretchAll
     }
 }

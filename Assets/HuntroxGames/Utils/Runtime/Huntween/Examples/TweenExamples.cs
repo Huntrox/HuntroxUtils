@@ -20,7 +20,7 @@ namespace HuntroxGames.Utils
         private Tween tween;
         public int testIntVar = 0;
 
-        public void Start()
+        private void Start()
         {
             button.onClick.AddListener(() =>
             {
